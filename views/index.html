@@ -15,9 +15,8 @@ canvas {
 <body onload="startGame()">
   <div ng-controller="myController">
     <h2>Almost there, Red <%= username %>...</h2>
-    <a href="/logout">logout</a>
-    <a href="/user">Edit User</a>
-    <p>Place Your Code Here<p>
+    
+    
 
 <script>
 
@@ -28,6 +27,7 @@ var myScore;
 var myBackGround;
 
 function startGame() {
+	//document.getElementById("old-score").value = document.getElementById("saved-score").value;
     //myGamePiece = new component(31, 51, "NO", 10, 120);
     //myGamePiece.gravity = 0.05;
     myBackGround = new component(1024, 270, "Trench", 0, 0, "image");
@@ -127,6 +127,10 @@ function updateGameArea() {
             return;
         } */
         if (myGameImage.crashWith(myObstacles[i])) {
+        	//ADDED BELOW
+        	//document.getElementById("old-score").value = document.getElementById("saved-score").value;
+        	document.getElementById("saved-score").value = "" + myGameArea.frameNo;
+        	//ADDED ABOVE
             return;
         } 
     }
@@ -170,18 +174,37 @@ function accelerate(n) {
 }
 </script>
 <br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
-<p>Use the ACCELERATE button to stay in the air</p>
-<p>How long can you stay alive?</p>
+<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">USE THE FORCE</button>
+<br>
+</br>
+<a href="/logout">logout</a>
+<a href="/user">User Profile</a>
+<div style="display: none;">
     <img id="OldX" src="http://ec2-52-41-158-1.us-west-2.compute.amazonaws.com/CS201R/OldX.png"> 
     <img id="Trench" src="http://ec2-52-41-158-1.us-west-2.compute.amazonaws.com/CS201R/DeathStarTrench.jpg" width="1024" height="270">
     <img id="Back" src="http://ec2-52-41-158-1.us-west-2.compute.amazonaws.com/CS201R/DeathStarCartoon.jpg">
-     
-    
-
+</div>
+    <!--ADDED BELOW-->
+    <p class="form-header">User Profile</p>
+    <form method="POST" action="/user/update">
+       <label>Username:</label>
+         <input type="text" name="username" 
+                ng-model="user.username" disabled><br>
+       <label>Email:</label>
+         <input type="email" name="email" 
+                ng-model="user.email"><br>
+       <!--<label>Old Score:</label>
+         <input type="text" id="old-score" readonly="readonly"><br>-->
+       <label>Newest Score:</label>
+         <input type="text" name="color" id="saved-score"
+                ng-model="user.color" readonly="readonly"><br>
+       <input type="submit" value="Save Score!"> 
+    </form>       
+  </div>
+<!--ADDED ABOVE-->
   </div>
   <hr><%= msg %>
-  <hr>Color <%= color %>
+  <!--<hr>Color <%= color %>-->
   <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="/static/js/my_app.js"></script>
 </body>

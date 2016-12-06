@@ -15,10 +15,10 @@
        <label>Email:</label>
          <input type="email" name="email" 
                 ng-model="user.email"><br>
-       <label>Favorite Color:</label>
+       <label>High Score:</label>
          <input type="text" name="color" 
-                ng-model="user.color"><br>
-       <input type="submit" value="Save"> <!-- How do I save this? Like where's the on-click? -->
+                ng-model="user.color" readonly="readonly"><br>
+       <!--<input type="submit" value="Save"> ADDED THE CHUNK ABOVE TOO: 'readonly="readonly"'-->
     </form>       
   </div>
   <form method="POST" action="/user/delete">
@@ -27,6 +27,6 @@
   <hr><%= msg %>
   <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="/static/js/my_app.js"></script>
-  <a href="/">Home</a>
+  <a href="/">Play again!</a>
 </body>
 </html>
