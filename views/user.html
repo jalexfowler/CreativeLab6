@@ -2,12 +2,31 @@
 <html ng-app="myApp">
 <head>
   <title>User Login and Sessions</title>
-  <link rel="stylesheet" type="text/css" 
-      href="/static/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" type="text/css"
+        href="../static/css/styles.css" />
 </head>
 <body>
+<div class="text-center">
+  <div class="header" >
+    <h1 >Almost there, Red <%= username %>... </h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
   <div class="form-container" ng-controller="myController">
-    <p class="form-header">User Profile</p>
+    <h1 class="form-header">User Profile</h1>
+      <br>
     <form method="POST" action="/user/update">
        <label>Username:</label>
          <input type="text" name="username" 
@@ -19,14 +38,21 @@
          <input type="text" name="color" 
                 ng-model="user.color" readonly="readonly"><br>
        <!--<input type="submit" value="Save"> ADDED THE CHUNK ABOVE TOO: 'readonly="readonly"'-->
-    </form>       
+    </form>
+    <a href="/">Play again!</a>
   </div>
   <form method="POST" action="/user/delete">
     <input type="submit" value="Delete User">
   </form>
-  <hr><%= msg %>
   <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="/static/js/my_app.js"></script>
-  <a href="/">Play again!</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer navbar-fixed-bottom">
+  <div class="well well-sm"><div class="text-center">Jesse Robinson <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Alex Fowler</div></div>
+</div>
 </body>
 </html>
