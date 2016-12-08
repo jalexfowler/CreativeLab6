@@ -17,16 +17,20 @@
         href="../static/css/styles.css" />
 </head>
 <body>
+  <div ng-controller="myController">
 <div class="text-center">
   <div class="header" >
-    <h1 >Almost there, Red <%= username %>... </h1>
+    <h1 >Almost there, Red {{user.username}} ... </h1>
+	 <h2>
+                    <small><a href="/logout"> Logout  </a><span class="glyphicon glyphicon-minus" aria-hidden="true"></span><a href="/">  Home</a></small>
+                </h2>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-  <div class="form-container" ng-controller="myController">
     <h1 class="form-header">User Profile</h1>
       <br>
+<div class="form-container">
     <form method="POST" action="/user/update">
        <label>Username:</label>
          <input type="text" name="username" 
@@ -39,13 +43,11 @@
                 ng-model="user.color" readonly="readonly"><br>
        <!--<input type="submit" value="Save"> ADDED THE CHUNK ABOVE TOO: 'readonly="readonly"'-->
     </form>
-    <a href="/">Play again!</a>
+    <h3><a href="/">Play again!</a><h3>
   </div>
   <form method="POST" action="/user/delete">
     <input type="submit" value="Delete User">
   </form>
-  <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-  <script src="/static/js/my_app.js"></script>
 
       </div>
     </div>
@@ -54,5 +56,8 @@
 <div class="footer navbar-fixed-bottom">
   <div class="well well-sm"><div class="text-center">Jesse Robinson <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Alex Fowler</div></div>
 </div>
+
+  <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+  <script src="/static/js/my_app.js"></script>
 </body>
 </html>
